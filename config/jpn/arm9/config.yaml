@@ -1,0 +1,83 @@
+rom_config: ../../../extract/jpn/config.yaml
+build_path: ../../../build/jpn
+delinks_path: ../../../build/jpn/delinks
+enable_dsprot: true
+main_module:
+  name: main
+  object: ../../../build/jpn/build/arm9.bin
+  hash: b0fa9366af8b44f6
+  delinks: delinks.txt
+  symbols: symbols.txt
+  relocations: relocs.txt
+autoloads:
+  - kind: Itcm
+    name: itcm
+    object: ../../../build/jpn/build/itcm.bin
+    hash: b844a08815eaac89
+    delinks: itcm/delinks.txt
+    symbols: itcm/symbols.txt
+    relocations: itcm/relocs.txt
+  - kind: Dtcm
+    name: dtcm
+    object: ../../../build/jpn/build/dtcm.bin
+    hash: 420cad042e42462f
+    delinks: dtcm/delinks.txt
+    symbols: dtcm/symbols.txt
+    relocations: dtcm/relocs.txt
+overlays:
+  - id: 0
+    name: ov000
+    object: ../../../build/jpn/build/arm9_ov000.bin
+    hash: 78d8b0c56230acdf
+    delinks: overlays/ov000/delinks.txt
+    symbols: overlays/ov000/symbols.txt
+    relocations: overlays/ov000/relocs.txt
+  - id: 1
+    name: ov001
+    object: ../../../build/jpn/build/arm9_ov001.bin
+    hash: 9c0fdd7a15592555
+    delinks: overlays/ov001/delinks.txt
+    symbols: overlays/ov001/symbols.txt
+    relocations: overlays/ov001/relocs.txt
+  - id: 2
+    name: ov002
+    object: ../../../build/jpn/build/arm9_ov002.bin
+    hash: d44851bb8031d691
+    delinks: overlays/ov002/delinks.txt
+    symbols: overlays/ov002/symbols.txt
+    relocations: overlays/ov002/relocs.txt
+  - id: 3
+    name: ov003
+    object: ../../../build/jpn/build/arm9_ov003.bin
+    hash: 2c2fbf348a3f3335
+    delinks: overlays/ov003/delinks.txt
+    symbols: overlays/ov003/symbols.txt
+    relocations: overlays/ov003/relocs.txt
+  - id: 4
+    name: ov004
+    object: ../../../build/jpn/build/arm9_ov004.bin
+    hash: 333522385351508a
+    delinks: overlays/ov004/delinks.txt
+    symbols: overlays/ov004/symbols.txt
+    relocations: overlays/ov004/relocs.txt
+  - id: 5
+    name: ov005
+    object: ../../../build/jpn/build/arm9_ov005.bin
+    hash: 2e057fcbf0fa749a
+    delinks: overlays/ov005/delinks.txt
+    symbols: overlays/ov005/symbols.txt
+    relocations: overlays/ov005/relocs.txt
+  - id: 6
+    name: ov006
+    object: ../../../build/jpn/build/arm9_ov006.bin
+    hash: 8d329012e69734c8
+    delinks: overlays/ov006/delinks.txt
+    symbols: overlays/ov006/symbols.txt
+    relocations: overlays/ov006/relocs.txt
+  - id: 7
+    name: ov007
+    object: ../../../build/jpn/build/arm9_ov007.bin
+    hash: f6ce4e26e8537169
+    delinks: overlays/ov007/delinks.txt
+    symbols: overlays/ov007/symbols.txt
+    relocations: overlays/ov007/relocs.txt

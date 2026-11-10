@@ -1,0 +1,70 @@
+{
+  // Use Ctrl+Shift+B to run build tasks.
+  // Or "Run Build Task" in the Command Palette.
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "ninja",
+      "type": "shell",
+      "command": "ninja",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "ninja objdiff",
+      "detail": "Write objdiff.json for the objdiff GUI",
+      "type": "shell",
+      "command": "ninja objdiff",
+      "problemMatcher": []
+    },
+    {
+      "label": "ninja report",
+      "detail": "Write build/jpn/report.json",
+      "type": "shell",
+      "command": "ninja report",
+      "problemMatcher": []
+    },
+    {
+      "label": "report_diff: save baseline",
+      "type": "shell",
+      "command": "python tools/report_diff.py --save",
+      "dependsOn": "ninja report",
+      "problemMatcher": []
+    },
+    {
+      "label": "report_diff: changes since baseline",
+      "detail": "Regressions and improvements against the saved baseline",
+      "type": "shell",
+      "command": "python tools/report_diff.py",
+      "dependsOn": "ninja report",
+      "problemMatcher": []
+    },
+    {
+      "label": "asm_compare",
+      "type": "shell",
+      "command": "python tools/asm_compare.py ${input:unit} ${input:symbol}",
+      "dependsOn": "ninja objdiff",
+      "problemMatcher": []
+    },
+    {
+      "label": "unit_candidates",
+      "type": "shell",
+      "command": "python tools/unit_candidates.py -n 50",
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "unit",
+      "type": "promptString",
+      "description": "Unit (e.g. unit_02000000)"
+    },
+    {
+      "id": "symbol",
+      "type": "promptString",
+      "description": "Symbol (e.g. func_02000000)"
+    }
+  ]
+}

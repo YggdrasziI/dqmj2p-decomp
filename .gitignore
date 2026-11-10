@@ -1,0 +1,43 @@
+# IDE folders
+.idea/
+.vs/
+*.code-workspace
+
+# Caches
+__pycache__
+.mypy_cache
+.cache/
+
+# Original files (ROM, BIOS, extracted contents)
+*.nds
+*bios.bin
+bios/
+extract/*
+!extract/.gitkeep
+
+# Build files
+build/
+.ninja_*
+build.ninja
+*.o
+*.sav
+*.xMAP
+
+# Downloaded tools
+/dsd
+/dsd.exe
+/objdiff-cli*
+/wibo
+/sjiswrap.exe
+tools/mwccarm/
+
+# Ghidra projects live outside the repo, but never commit one by accident
+*.gpr
+*.rep/
+
+# Generated files
+objdiff.json
+compile_commands.json
+*.ctx.c
+*.ctx.cpp
+ctx.c

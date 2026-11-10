@@ -1,0 +1,70 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    # This is a *private* build container (YggdrasziI/dqmj2-decomp-build, tag `pro`,
+    # shared with DQMJ2, one tag per game):
+    # it holds the ROM in /extract, the mwccarm compilers and wibo built from the
+    # commit that sets the guest x87 state (/usr/local/bin/wibo). No BIOS: the ROM is
+    # checked against build_nobios.sha1 (see SPEC.md).
+    container: ghcr.io/yggdraszii/dqmj2-decomp-build:pro
+
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        version: [jpn]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Copy the ROM to the workspace (dsd extracts it during the build)
+      - name: Prepare
+        run: cp -a /extract/. ./extract/
+
+      # Tool versions must match tools/configure.py
+      - name: Download tools
+        run: |
+          python tools/download_tool.py dsd v0.12.1 --path dsd
+          python tools/download_tool.py objdiff v3.8.1 --path objdiff-cli
+
+      # Delink, link, check modules and symbols, rebuild and check the ROM, report
+      - name: Build
+        run: |
+          ./dsd --version
+          python tools/configure.py --version ${{ matrix.version }} -w /usr/local/bin/wibo --compiler /mwccarm
+          ninja
+
+      # On failure, keep what is needed to compare with a local build: our compiled
+      # objects (our own code, no ROM bytes) and the link script
+      - name: Upload objects on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.version }}_objects
+          path: |
+            build/${{ matrix.version }}/libs
+            build/${{ matrix.version }}/src
+            build/${{ matrix.version }}/arm9.lcf
+            build/${{ matrix.version }}/objects.txt
+
+      # Draw the progress badges (nothing is committed by CI)
+      - name: Progress badges
+        run: python tools/progress_badges.py --version ${{ matrix.version }} --report build/${{ matrix.version }}/report.json --out build/${{ matrix.version }}/progress_badges
+
+      - name: Upload progress badges
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.version }}_progress
+          path: build/${{ matrix.version }}/progress_badges
+
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.version }}_report
+          path: build/${{ matrix.version }}/report.json
