@@ -61,3 +61,8 @@ ov005 = "ov005"
 ov006 = "ov006"
 ov007 = "ov007"
 
+
+# tools/common/check_traces.py (pre-commit and commit-msg hooks): the README's
+# disclosure line
+[traces]
+allow = ["decompile this for me"]
