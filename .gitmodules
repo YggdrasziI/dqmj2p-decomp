@@ -1,0 +1,3 @@
+[submodule "tools/common"]
+	path = tools/common
+	url = https://github.com/YggdrasziI/decomp-tools.git
