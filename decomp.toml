@@ -46,10 +46,18 @@ module_files = "config/{version}/arm9/**/delinks.txt"
 module_folders = { arm9 = "main" }
 apart = 'ov\d+'
 
-# Only the DS Protect overlay has a known role (dsd extract, 2026-11-10)
+# Row labels, in module order (labelled modules come first on the card). Only the DS
+# Protect overlay has a known role (dsd extract, 2026-11-10).
 [progress.module_labels]
 main = "Main"
 itcm = "ITCM"
 dtcm = "DTCM"
+ov000 = "ov000"
+ov001 = "ov001"
+ov002 = "ov002"
+ov003 = "ov003"
 ov004 = "ov004 protection"
+ov005 = "ov005"
+ov006 = "ov006"
+ov007 = "ov007"
 

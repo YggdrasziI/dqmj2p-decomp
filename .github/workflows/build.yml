@@ -57,7 +57,7 @@ jobs:
 
       # Draw the progress badges (nothing is committed by CI)
       - name: Progress badges
-        run: python tools/progress_badges.py --version ${{ matrix.version }} --report build/${{ matrix.version }}/report.json --out build/${{ matrix.version }}/progress_badges
+        run: python tools/common/progress_badges.py --version ${{ matrix.version }} --report build/${{ matrix.version }}/report.json --out build/${{ matrix.version }}/progress_badges
 
       - name: Upload progress badges
         uses: actions/upload-artifact@v4

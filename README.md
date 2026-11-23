@@ -42,13 +42,13 @@ Progress
 - **Linked**: code built from source (`complete` files of `delinks.txt`).
 
 The badges and the card are drawn from the objdiff report by
-`tools/progress_badges.py`. After a build, `python tools/progress_badges.py --record`
+`tools/common/progress_badges.py`. After a build, `python tools/common/progress_badges.py --record`
 redraws `progress/jpn/` and adds the current commit to `progress/jpn/history.csv`.
 
 Dependencies
 ============
 
-- [Python](https://www.python.org/downloads/) 3.10+ in `%PATH%`, then
+- [Python](https://www.python.org/downloads/) 3.11+ in `%PATH%`, then
   `pip install -r tools/requirements.txt`.
 - [ninja](https://github.com/ninja-build/ninja/releases) in `%PATH%`
   (`pip install ninja` works too).

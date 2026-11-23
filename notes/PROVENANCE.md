@@ -15,7 +15,6 @@ same owner, CC0-1.0), commit `80b83b28a403213e23764af195af92a52b4bd7a9`, copied 
 | Our file | Changes |
 |---|---|
 | `tools/configure.py` | `GAME = "dqmj2p"`; only version `jpn` (B2JJ); `TWEWY_HEADER_SOURCES` empty |
-| `tools/progress_badges.py` | title; `REGIONS` empty and overlay labels reduced to ov004 until the region map exists |
 | `tools/unit_candidates.py` | `GAME_REGIONS`: ov000-ov007, whole `.text`, ov004 (DS Protect) left out |
 | `tools/ghidra_sync.py` | `DQMJ2P_GHIDRA_PROJECT`, project name `dqmj2p_jpn` |
 | `tools/permute.py` | usage examples without DQMJ2 addresses |
@@ -36,7 +35,10 @@ It replaces our former copies of:
 - `tools/asm_compare.py` (ts2-castaway): `tools/common/asm_compare.py` is the same
   tool, with absolute `--objects` paths; `tools/why_diff.py` imports it;
 - `tools/report_diff.py` (ts2-castaway): `tools/common/report_diff.py` is the same
-  gate (`[report] auto_units` = `_dsd_gap@` in `decomp.toml`).
+  gate (`[report] auto_units` = `_dsd_gap@` in `decomp.toml`);
+- `tools/progress_badges.py` (ts2-castaway, rows per module and overlay from
+  dqmj2-decomp): `tools/common/progress_badges.py` draws the same card, its module
+  rows and labels set in `decomp.toml` (`[progress]`).
 
 ## Project documents
 
