@@ -10,11 +10,11 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from get_platform import Platform, get_platform
-
-# Shared tools (decomp-tools submodule)
+# Shared tools (decomp-tools submodule) and Nintendo DS tools (nds-decomp-tools submodule)
 sys.path.insert(1, str(Path(__file__).resolve().parent / "common"))
+sys.path.insert(1, str(Path(__file__).resolve().parent / "nds"))
 import ninja_syntax  # noqa: E402
+from get_platform import Platform, get_platform  # noqa: E402
 
 # Game Versions
 VERSIONS = [
@@ -415,7 +415,7 @@ def main():
         )
         mwcc_common_implicit: list[str] = []
         if platform.system != "windows":
-            transform_dep = "tools/transform_dep.py"
+            transform_dep = "tools/nds/transform_dep.py"
             mwcc_cmd += f" && $python {transform_dep} $basefile.d $basefile.d"
             mwcc_common_implicit.append(transform_dep)
             if WINE == DEFAULT_WIBO_PATH:
@@ -453,14 +453,14 @@ def main():
 
         n.rule(
             name="objdiff",
-            command=f"{PYTHON} tools/objdiff_prune.py {DSD} {DSD_BASE_FLAGS} objdiff --config-path $config_path {DSD_OBJDIFF_ARGS}",
+            command=f"{PYTHON} tools/nds/objdiff_prune.py {DSD} {DSD_BASE_FLAGS} objdiff --config-path $config_path {DSD_OBJDIFF_ARGS}",
         )
         n.newline()
 
         n.rule(name="objdiff_report", command=f"{OBJDIFF} report generate -o $out")
         n.newline()
 
-        n.rule(name="m2ctx", command=f"{PYTHON} tools/m2ctx.py -f $out $in")
+        n.rule(name="m2ctx", command=f"{PYTHON} tools/nds/m2ctx.py -f $out $in")
         n.newline()
 
         n.rule(
@@ -812,7 +812,7 @@ def add_objdiff_builds(n: ninja_syntax.Writer, project: Project):
     n.build(
         inputs=project.dsd_configs(),
         # Sources too: objdiff_prune.py keeps base objects only for existing sources.
-        implicit=[DSD, "tools/objdiff_prune.py", *map(str, project.source_files())],
+        implicit=[DSD, "tools/nds/objdiff_prune.py", *map(str, project.source_files())],
         rule="objdiff",
         outputs="objdiff.json",
         variables={

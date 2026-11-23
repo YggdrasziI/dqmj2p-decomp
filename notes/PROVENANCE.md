@@ -40,6 +40,19 @@ It replaces our former copies of:
   dqmj2-decomp): `tools/common/progress_badges.py` draws the same card, its module
   rows and labels set in `decomp.toml` (`[progress]`).
 
+## Nintendo DS tools (`tools/nds/`)
+
+`tools/nds/` is the [nds-decomp-tools](https://github.com/YggdrasziI/nds-decomp-tools)
+submodule (same owner, CC0-1.0; its README gives the provenance of its own files).
+It replaces our former copies (from ts2-castaway) of:
+
+- `tools/get_platform.py`, `tools/transform_dep.py` (twewy): same content;
+- `tools/m2ctx.py` (twewy): same tool, the project root found from `decomp.toml`
+  instead of the script's folder, include directories from `[m2ctx] include_dirs`
+  (the former list by default);
+- `tools/objdiff_prune.py`: same tool, `objdiff.json` read from the current
+  directory (the build runs from the project root).
+
 ## Project documents
 
 `SPEC.md`, `README.md`, `notes/`, `.vscode/tasks.json`, `.github/workflows/build.yml`

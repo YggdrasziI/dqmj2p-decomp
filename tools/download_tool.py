@@ -1,6 +1,10 @@
 import argparse
+import sys
 from pathlib import Path
-from get_platform import get_platform
+
+# Nintendo DS tools (nds-decomp-tools submodule)
+sys.path.insert(1, str(Path(__file__).resolve().parent / "nds"))
+from get_platform import get_platform  # noqa: E402
 import zipfile
 import io
 import requests

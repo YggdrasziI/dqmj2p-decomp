@@ -1,3 +1,6 @@
 [submodule "tools/common"]
 	path = tools/common
 	url = https://github.com/YggdrasziI/decomp-tools.git
+[submodule "tools/nds"]
+	path = tools/nds
+	url = https://github.com/YggdrasziI/nds-decomp-tools.git
