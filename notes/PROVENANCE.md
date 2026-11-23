@@ -48,10 +48,18 @@ It replaces our former copies (from ts2-castaway) of:
 
 - `tools/get_platform.py`, `tools/transform_dep.py` (twewy): same content;
 - `tools/m2ctx.py` (twewy): same tool, the project root found from `decomp.toml`
-  instead of the script's folder, include directories from `[m2ctx] include_dirs`
+  instead of the script's folder, include directories from `[nds] include_dirs`
   (the former list by default);
 - `tools/objdiff_prune.py`: same tool, `objdiff.json` read from the current
   directory (the build runs from the project root).
+
+Since 2026-11-23 it also replaces our copies of `compiler_sweep.py`,
+`decl_search.py`, `download_tool.py`, `gdb_trace.py`, `ghidra_sync.py`,
+`lcf_keep.py`, `mangle.py`, `mwcc_blocks.py`, `mwcc_irdump.py`, `mwcc_sched.py` and
+`unit_candidates.py`, merged with those of the sibling NDS projects (the newest of
+each: overlays, download retries, FORCE_ACTIVE of the sourced functions). The game
+settings they held (version, compiler, link-time constants, candidate regions,
+Ghidra project) are now in the `[nds]` table of `decomp.toml`.
 
 ## Project documents
 

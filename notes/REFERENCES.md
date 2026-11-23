@@ -12,7 +12,7 @@
 - [AetiasHax/unarm](https://github.com/AetiasHax/unarm): ARM disassembler used by
   objdiff for DS projects.
 - [AetiasHax/dsd-ghidra](https://github.com/AetiasHax/dsd-ghidra): Ghidra loader and
-  `SyncDsd.java` script (`tools/ghidra_sync.py`).
+  `SyncDsd.java` script (`tools/nds/ghidra_sync.py`).
 - [encounter/objdiff](https://github.com/encounter/objdiff): local diff (reads
   `objdiff.json`), `objdiff-cli report` / `diff`.
 - mwccarm / mwldarm: `http://decomp.aetias.com/files/mwccarm.zip` (downloaded by

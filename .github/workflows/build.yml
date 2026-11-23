@@ -32,8 +32,8 @@ jobs:
       # Tool versions must match tools/configure.py
       - name: Download tools
         run: |
-          python tools/download_tool.py dsd v0.12.1 --path dsd
-          python tools/download_tool.py objdiff v3.8.1 --path objdiff-cli
+          python tools/nds/download_tool.py dsd v0.12.1 --path dsd
+          python tools/nds/download_tool.py objdiff v3.8.1 --path objdiff-cli
 
       # Delink, link, check modules and symbols, rebuild and check the ROM, report
       - name: Build

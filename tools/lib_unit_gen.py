@@ -42,6 +42,7 @@ from collections import defaultdict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
+sys.path.insert(0, os.path.join(ROOT, "tools", "nds"))  # compiler_sweep
 import compiler_sweep  # noqa: E402
 import sweep_names  # noqa: E402
 

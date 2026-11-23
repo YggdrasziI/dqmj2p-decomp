@@ -20,7 +20,7 @@ into a kind, so that the source change to try follows from the kind
 Literal pool offsets and branch targets that differ only because code moved
 are not counted.
 
-With --trace, tools/mwcc_sched.py also traces our compile (Windows only) and
+With --trace, tools/nds/mwcc_sched.py also traces our compile (Windows only) and
 the permuted registers are listed with the virtual registers the compiler gave
 them, in the order register coloring visited them: the first visited gets the
 lowest free register, and a sweep visits virtual registers from the highest
@@ -189,7 +189,7 @@ def trace_colors(unit, symbol):
             src = p
     if src is None:
         return None
-    res = subprocess.run([sys.executable, os.path.join(ROOT, "tools", "mwcc_sched.py"),
+    res = subprocess.run([sys.executable, os.path.join(ROOT, "tools", "nds", "mwcc_sched.py"),
                           os.path.relpath(src, ROOT), symbol, "--colors"],
                          capture_output=True, text=True, cwd=ROOT)
     last = None

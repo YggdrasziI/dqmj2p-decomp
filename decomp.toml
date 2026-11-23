@@ -66,3 +66,32 @@ ov007 = "ov007"
 # disclosure line
 [traces]
 allow = ["decompile this for me"]
+
+# Nintendo DS tools (tools/nds/, nds_config.py)
+[nds]
+ghidra_project = "dqmj2p"              # Ghidra project dqmj2p_<version>
+ghidra_env = "DQMJ2P_GHIDRA_PROJECT"   # variable holding the Ghidra project folder
+
+# tools/nds/lcf_keep.py: NitroSDK link-time constants (dqmj2's values, copied with
+# its lcf_keep.py; not checked against this ROM's literal pools yet)
+[nds.absolute_symbols]
+SDK_IRQ_STACKSIZE = 0x1000
+SDK_SYS_STACKSIZE = 0x1000
+SDK_SECTION_ARENA_DTCM_START = 0x027E0080
+SDK_OVERLAY_DIGEST = 0x020CBBFC
+SDK_OVERLAY_DIGEST_END = 0x020CBBFC
+data_027ffff0 = 0x027FFFF0
+
+# tools/nds/unit_candidates.py: game code regions per module (hypotheses,
+# notes/SPLITS.md and notes/COMPILER.md). Not mapped yet for this ROM: every
+# module's whole .text is a candidate, except ov004 (DS Protect, left out). Narrow
+# these once the region map exists (ROADMAP Step 5).
+[nds.candidates.jpn]
+main = "text"
+ov000 = "text"
+ov001 = "text"
+ov002 = "text"
+ov003 = "text"
+ov005 = "text"
+ov006 = "text"
+ov007 = "text"

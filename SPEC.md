@@ -79,7 +79,7 @@ Evidence and the candidate analysis go in `notes/COMPILER.md`.
 - Linker flags: `-proc arm946e -interworking -dead -nostdlib -m Entry`, as in
   dqmj2-decomp.
 - Optional: Ghidra 11.2.1 with the dsd-ghidra v0.7.0 extension, outside the repository
-  (`tools/ghidra_sync.py` pushes the dsd symbols to a Ghidra project).
+  (`tools/nds/ghidra_sync.py` pushes the dsd symbols to a Ghidra project).
 
 ## Acceptance criteria
 

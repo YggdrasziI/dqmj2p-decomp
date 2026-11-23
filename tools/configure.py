@@ -113,7 +113,7 @@ LD_FLAGS = " ".join(
         "-interworking",  # Enable ARM/Thumb interworking
         "-map closure,unused",  # Generate map file
         "-msgstyle gcc",  # Use GCC-like messages (some IDEs will make file names clickable)
-        "-dead",  # Strip unused code, as the original link did (tools/lcf_keep.py)
+        "-dead",  # Strip unused code, as the original link did (tools/nds/lcf_keep.py)
         "-nostdlib",  # Do not link to MWLibraries
     ]
 )
@@ -377,7 +377,7 @@ def main():
 
         n.rule(
             name="download_tool",
-            command=f"{PYTHON} tools/download_tool.py $tool $tag --path $path",
+            command=f"{PYTHON} tools/nds/download_tool.py $tool $tag --path $path",
         )
         n.newline()
 
@@ -429,7 +429,7 @@ def main():
 
         n.rule(
             name="lcf",
-            command=f"{PYTHON} tools/lcf_keep.py $lcf_file {DSD} {DSD_BASE_FLAGS} lcf -c $config_path",
+            command=f"{PYTHON} tools/nds/lcf_keep.py $lcf_file {DSD} {DSD_BASE_FLAGS} lcf -c $config_path",
         )
         n.newline()
 
@@ -751,7 +751,7 @@ def add_delink_and_lcf_builds(n: ninja_syntax.Writer, project: Project):
         inputs=project.delinks_files + [str(rom_config)],
         # lcf_keep.py lists the functions of the units that have a source
         # (FORCE_ACTIVE): it reads symbols.txt and checks which sources exist
-        implicit=[DSD, "tools/lcf_keep.py",
+        implicit=[DSD, "tools/nds/lcf_keep.py",
                   *get_config_files(project.game_config, "symbols.txt"),
                   *map(str, project.source_files())],
         rule="lcf",
