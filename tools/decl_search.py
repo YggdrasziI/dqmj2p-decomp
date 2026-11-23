@@ -2,7 +2,7 @@
 
 Usage: python tools/decl_search.py [budget]. Run after ninja. Writes the best
 files to a temporary folder (printed); the score is an estimate of objdiff, so
-check each applied file with tools/report_diff.py and revert any regression.
+check each applied file with tools/common/report_diff.py and revert any regression.
 """
 import tempfile
 import subprocess,struct,re,os,sys

@@ -34,7 +34,9 @@ It replaces our former copies of:
 - `tools/sha1.py` (twewy): `tools/common/sha1.py <file> -c <list>` gives the same
   check and output;
 - `tools/asm_compare.py` (ts2-castaway): `tools/common/asm_compare.py` is the same
-  tool, with absolute `--objects` paths; `tools/why_diff.py` imports it.
+  tool, with absolute `--objects` paths; `tools/why_diff.py` imports it;
+- `tools/report_diff.py` (ts2-castaway): `tools/common/report_diff.py` is the same
+  gate (`[report] auto_units` = `_dsd_gap@` in `decomp.toml`).
 
 ## Project documents
 

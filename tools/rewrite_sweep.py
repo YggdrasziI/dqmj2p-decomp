@@ -14,7 +14,7 @@ scored by objdiff-cli against the delinked target, as in the report (`--scorer w
 permute.py's count of differing words, faster but often wrong on gains). Nothing
 in the repository is written. A rewrite is only checked by the compiled bytes: a variant
 that scores better but is not a match may change what the code does, so read it before
-keeping it, and keep nothing that tools/report_diff.py and ninja do not confirm. The
+keeping it, and keep nothing that tools/common/report_diff.py and ninja do not confirm. The
 output form is a compiler fact, not evidence of the original source.
 
   python tools/rewrite_sweep.py <unit> <symbol> [--depth N] [--beam N] [--workers N]

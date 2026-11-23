@@ -29,7 +29,7 @@
     {
       "label": "report_diff: save baseline",
       "type": "shell",
-      "command": "python tools/report_diff.py --save",
+      "command": "python tools/common/report_diff.py --save",
       "dependsOn": "ninja report",
       "problemMatcher": []
     },
@@ -37,7 +37,7 @@
       "label": "report_diff: changes since baseline",
       "detail": "Regressions and improvements against the saved baseline",
       "type": "shell",
-      "command": "python tools/report_diff.py",
+      "command": "python tools/common/report_diff.py",
       "dependsOn": "ninja report",
       "problemMatcher": []
     },
