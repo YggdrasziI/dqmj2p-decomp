@@ -24,6 +24,14 @@ same owner, CC0-1.0), commit `80b83b28a403213e23764af195af92a52b4bd7a9`, copied 
 Downloaded binaries (`dsd.exe` 0.12.1, `objdiff-cli.exe` 3.8.1, `tools/mwccarm/`) were
 copied from dqmj2-decomp's local copies, same versions as `configure.py` downloads.
 
+## Shared tools (`tools/common/`)
+
+`tools/common/` is the [decomp-tools](https://github.com/YggdrasziI/decomp-tools)
+submodule (same owner, CC0-1.0; its README gives the provenance of its own files).
+It replaces our former copies of:
+
+- `tools/ninja_syntax.py` (twewy, from ninja, Apache-2.0).
+
 ## Project documents
 
 `SPEC.md`, `README.md`, `notes/`, `.vscode/tasks.json`, `.github/workflows/build.yml`

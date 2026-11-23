@@ -10,8 +10,11 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-import ninja_syntax
 from get_platform import Platform, get_platform
+
+# Shared tools (decomp-tools submodule)
+sys.path.insert(1, str(Path(__file__).resolve().parent / "common"))
+import ninja_syntax  # noqa: E402
 
 # Game Versions
 VERSIONS = [
