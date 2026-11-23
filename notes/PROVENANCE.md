@@ -30,7 +30,9 @@ copied from dqmj2-decomp's local copies, same versions as `configure.py` downloa
 submodule (same owner, CC0-1.0; its README gives the provenance of its own files).
 It replaces our former copies of:
 
-- `tools/ninja_syntax.py` (twewy, from ninja, Apache-2.0).
+- `tools/ninja_syntax.py` (twewy, from ninja, Apache-2.0);
+- `tools/sha1.py` (twewy): `tools/common/sha1.py <file> -c <list>` gives the same
+  check and output.
 
 ## Project documents
 
