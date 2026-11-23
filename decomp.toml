@@ -1,0 +1,55 @@
+# Project settings read by the tools of tools/common (see tools/common/decomp_config.py)
+
+title = "Dragon Quest Monsters: Joker 2 Professional"
+
+# First one is the default version. Professional was only released in Japan (SPEC.md).
+versions = [
+    "jpn",  # B2JJ, rev 0
+]
+
+[paths]
+# dsd symbol files (`name kind:function(...) addr:0x...` lines) of every module:
+# main, ITCM, DTCM and the overlays
+symbol_files = "config/{version}/**/symbols.txt"
+
+# Compiler of the game units: mwccarm 2.0/sp2p2 with DQMJ2's game flags, taken from
+# dqmj2-decomp and not proven for this ROM yet (notes/COMPILER.md). Same as
+# MWCC_DEFAULT_VERSION and DEFAULT_CC_FLAGS of tools/configure.py.
+[compiler]
+path = "tools/mwccarm/2.0/sp2p2/mwccarm.exe"
+flags = "-O4,p -enum int -char signed -proc arm946e -gccext,on -fp soft -inline noauto -RTTI off -interworking -w off -sym on -gccinc -nolink -msgstyle gcc -enc SJIS -str reuse -Cpp_exceptions off"
+
+# tools/common/report_diff.py: units dsd makes from the code not yet delinked
+# (renumbered whenever a file is added to a delinks.txt)
+[report]
+auto_units = ["_dsd_gap@"]
+
+# tools/common/try_unit.py: one game source compiled outside the build and scored
+# against the object dsd delinked from the original for that file (piece = its path
+# in delinks.txt without the extension, e.g. src/main/unit_<start>). Same command as
+# the mwcc rule of tools/configure.py; the language goes by suffix.
+[try]
+compile = "{cc} {flags} -i include -i libs/nitro/include {suffix_flags} -d REGION_JPN -c {src} -o {obj}"
+target = "build/{version}/delinks/{piece}.o"
+
+[try.suffix_flags]
+".c" = "-lang=c99"
+".cpp" = "-lang=c++"
+
+# No [regions] yet: the region map of main and ITCM does not exist for this ROM
+# (ROADMAP Step 5), so the progress card has one row per module.
+
+# One card row per module: the module of a unit comes from the delinks.txt that lists
+# it, or from dsd's gap unit name (_dsd_gap@ov000_3)
+[progress]
+module_files = "config/{version}/arm9/**/delinks.txt"
+module_folders = { arm9 = "main" }
+apart = 'ov\d+'
+
+# Only the DS Protect overlay has a known role (dsd extract, 2026-11-10)
+[progress.module_labels]
+main = "Main"
+itcm = "ITCM"
+dtcm = "DTCM"
+ov004 = "ov004 protection"
+
