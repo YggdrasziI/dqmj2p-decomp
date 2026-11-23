@@ -18,7 +18,7 @@ same owner, CC0-1.0), commit `80b83b28a403213e23764af195af92a52b4bd7a9`, copied 
 | `tools/progress_badges.py` | title; `REGIONS` empty and overlay labels reduced to ov004 until the region map exists |
 | `tools/unit_candidates.py` | `GAME_REGIONS`: ov000-ov007, whole `.text`, ov004 (DS Protect) left out |
 | `tools/ghidra_sync.py` | `DQMJ2P_GHIDRA_PROJECT`, project name `dqmj2p_jpn` |
-| `tools/asm_compare.py`, `tools/permute.py` | usage examples without DQMJ2 addresses |
+| `tools/permute.py` | usage examples without DQMJ2 addresses |
 | every other file of `tools/` | none |
 
 Downloaded binaries (`dsd.exe` 0.12.1, `objdiff-cli.exe` 3.8.1, `tools/mwccarm/`) were
@@ -32,7 +32,9 @@ It replaces our former copies of:
 
 - `tools/ninja_syntax.py` (twewy, from ninja, Apache-2.0);
 - `tools/sha1.py` (twewy): `tools/common/sha1.py <file> -c <list>` gives the same
-  check and output.
+  check and output;
+- `tools/asm_compare.py` (ts2-castaway): `tools/common/asm_compare.py` is the same
+  tool, with absolute `--objects` paths; `tools/why_diff.py` imports it.
 
 ## Project documents
 

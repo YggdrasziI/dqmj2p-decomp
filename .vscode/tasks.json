@@ -44,7 +44,7 @@
     {
       "label": "asm_compare",
       "type": "shell",
-      "command": "python tools/asm_compare.py ${input:unit} ${input:symbol}",
+      "command": "python tools/common/asm_compare.py ${input:unit} ${input:symbol}",
       "dependsOn": "ninja objdiff",
       "problemMatcher": []
     },

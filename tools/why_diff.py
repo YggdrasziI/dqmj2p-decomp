@@ -40,7 +40,7 @@ import tempfile
 from collections import Counter, defaultdict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.join(ROOT, "tools"))
+sys.path.insert(0, os.path.join(ROOT, "tools", "common"))
 import asm_compare  # noqa: E402
 
 REG = re.compile(r"\b(r\d+|sp|lr|pc|ip)\b")
